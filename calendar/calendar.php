@@ -121,7 +121,7 @@ try{
       for( $j=0 ; $j<7 ; $j++ ){
         echo "<td>";
         if( ( ($i == 0 ) && ( ( date("d", mktime( 0, 0, 0, date("m", $start_day ), (date("d",$start_day )+ $i*7+$j), date("y",$start_day) ) ) )  > 7 ) )
-        || ( ( $i == 5 ) && ( ( date("d", mktime( 0, 0, 0, date("m", $start_day ), (date("d",$start_day )+ $i*7+$j), date("y",$start_day) ) ) ) < 28 ) )  )
+        || ( ( $i > 3 ) && ( ( date("d", mktime( 0, 0, 0, date("m", $start_day ), (date("d",$start_day )+ $i*7+$j), date("y",$start_day) ) ) ) < 15 ) )  )
           echo '<p class="otherday">';
         elseif( $j == 5)
           echo '<p class="saturday">';
