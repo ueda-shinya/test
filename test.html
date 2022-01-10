@@ -1,0 +1,19 @@
+<script>
+    let i = 3;
+
+    function scopeTest(){
+        let i = 5;
+
+        console.log(i);
+
+        for(let j =0; j < 10; j++){
+            console.log("i:" + i);
+            console.log("j:" + j);
+        }
+    }
+
+    scopeTest();
+
+    console.log(i);
+
+</script>
