@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>年月日表示の練習</title>
+</head>
+<body>
+    <select name="year" id="id_year"></select>
+    <select name="month" id="id_month"></select>
+    <select name="day" id="id_day"></select>
+    <select name="hour" id="id_hour"></select>
+    <select name="min" id="id_min"></select>
+
+    <script>optionLoop(1950, 2100, 'id_year', this_year)</script>年
+    <script>optionLoop(1, 12, 'id_month', this_month)</script>月
+    <script>optionLoop(1, 31, 'id_day', this_day)</script>日
+    <script>optionLoop(0, 23, 'id_hour', this_hour)</script>:
+    <script>optionLoop(0, 59, 'id_min', this_min)</script>
+    
+
+    <script>
+        (function() {
+            'use strict';
+
+            /*
+                今日の日付データを変数todayに格納
+            */
+            var optionLoop, this_day, this_month, this_year, today, this_hour, this_min ,hour, min;
+            today = new Date();
+            this_year = today.getFullYear();
+            this_month = today.getMonth() + 1;
+            this_day = today.getDate();
+            this_hour = today.getHours();
+            this_min = today.getMinutes();
+
+            /*
+                ループ処理（スタート数字、終了数字、表示id名、デフォルト数字）
+            */
+            optionLoop = function(start, end, id, this_day) {
+                var i, opt, len;
+
+                opt = null;
+                len = end.toString().length;
+
+                for (i = start; i <= end ; i++) {
+                if (i === this_day) {
+                    opt += "<option value='" + ( i.toString().padStart(len, '0') ) + "' selected>" + ( i.toString().padStart(len, '0') ) + "</option>";
+                } else {
+                    opt += "<option value='" + ( i.toString().padStart(len, '0') ) + "'>" + ( i.toString().padStart(len, '0') ) + "</option>";
+                }
+                }
+                return document.getElementById(id).innerHTML = opt;
+            };
+            /*
+                関数設定（スタート数字[必須]、終了数字[必須]、表示id名[省略可能]、デフォルト数字[省略可能]）
+            */
+
+            optionLoop(1950, 2100, 'id_year', this_year);
+            optionLoop(1, 12, 'id_month', this_month);
+            optionLoop(1, 31, 'id_day', this_day);
+            optionLoop(0, 23, 'id_hour', this_hour);
+            optionLoop(0, 59, 'id_min', this_min);
+
+        })();
+
+    </script>
+</body>
+</html>
